@@ -30,7 +30,6 @@ import (
 	"github.com/ONLYOFFICE/onlyoffice-integration-adapters/events"
 	"github.com/ONLYOFFICE/onlyoffice-integration-adapters/log"
 	"github.com/ONLYOFFICE/onlyoffice-integration-adapters/messaging"
-	"github.com/ONLYOFFICE/onlyoffice-integration-adapters/onlyoffice"
 	"github.com/ONLYOFFICE/onlyoffice-integration-adapters/registry"
 	"github.com/ONLYOFFICE/onlyoffice-integration-adapters/service/repl"
 	"github.com/ONLYOFFICE/onlyoffice-integration-adapters/storage"
@@ -127,7 +126,6 @@ func (b bootstrapper) Bootstrap() *fx.App {
 		fx.Provide(crypto.NewJwtManager),
 		fx.Provide(crypto.NewHasher),
 		fx.Provide(storage.NewStorage),
-		fx.Provide(onlyoffice.NewOnlyofficeFileUtility),
 		fx.Provide(b.modules...),
 		fx.Invoke(b.invokables...),
 		fx.Invoke(func(lifecycle fx.Lifecycle, service micro.Service, repl *http.Server, logger log.Logger) {
